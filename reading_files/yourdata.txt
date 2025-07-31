@@ -1,5 +1,6 @@
-Karthik
-Ravikanna
-Kirankumar
-Ram
-Rukmani
+Karthik 50
+Ravikanna 79
+Kirankumar 89
+Ram 82
+Rukmani 81
+Suchithra 90
