@@ -1,0 +1,33 @@
+      ┌─────────────────────────┐
+      │ 1. Import Libraries     │
+      │ (numpy, pandas, csv)  │
+      └─────────────┬───────────┘
+                    │
+                    ▼
+      ┌─────────────────────────┐
+      │ 2. Load Data            │
+      │ (CSV, JSON, DB, API)    │
+      └─────────────┬───────────┘
+                    │
+                    ▼
+      ┌─────────────────────────┐
+      │ 3. Preprocess Data      │
+      │ (clean, split, scale)   │
+      └─────────────┬───────────┘
+                    │
+                    ▼
+      ┌─────────────────────────┐
+      │ 4. Main Logic           │
+      │ (assigning, calling)    │
+      └─────────────┬───────────┘
+
+Start
+  │
+  ▼
+Import csv ───► Define functions ───► Run main()
+  │
+  ▼
+Read CSV → Filter students → Print result
+  │
+  ▼
+End
