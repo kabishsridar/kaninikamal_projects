@@ -1,20 +1,10 @@
-import csv
-
-class Student:
-    def __init__(self, name, marks):
-        self.name = name
-        self.marks = marks
-
-    def average(self):
-        return sum(self.marks) / len(self.marks)
-
-    def is_passed(self):
-        return self.average() >= 40
+from module_file import Student
+from csv import reader
 
 students = []
 
 with open("students.csv", newline='') as file:
-    reader = csv.reader(file)
+    reader = reader(file)
     next(reader)  # skip header
     for row in reader:
         name = row[0]
