@@ -91,6 +91,13 @@ def run_download():
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8")
 
         for line in process.stdout:
+            
+            try:
+                line = line.decode("utf-8")
+            except UnicodeDecodeError as e:
+                progress_var.set(f"facing unicode error: {e}")
+                line = line.decode("cp1252", errors="replace")
+
             line = line.strip()
             match = re.search(r'(\d+\.\d)%', line)
             if match:
