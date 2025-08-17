@@ -1,0 +1,11 @@
+product_id,name,description,unit_price,tax_rate
+PROD001,Web Development,"Full-stack web project",50000,18
+PROD002,Mobile App Development,"Android/iOS app build",75000,18
+PROD003,Cloud Hosting (Yearly),"Annual cloud hosting",12000,18
+PROD004,Digital Marketing,"SEO + Social Media Marketing",30000,18
+PROD005,Data Analytics,"BI dashboards and insights",45000,18
+PROD006,UI/UX Design,"Website + Mobile App UI/UX",25000,18
+PROD007,DevOps Setup,"CI/CD and infra automation",60000,18
+PROD008,API Integration,"Third-party API integration",20000,18
+PROD009,IT Consulting,"Hourly consulting service",5000,18
+PROD010,Training Workshop,"Corporate training session",15000,18

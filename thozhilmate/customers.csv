@@ -1,0 +1,11 @@
+customer_id,name,email,phone,company,address
+CUST001,Anjali Sharma,anjali@abc.com,9876543210,ABC Pvt Ltd,"Bangalore, India"
+CUST002,Rajesh Kumar,rajesh@xyz.com,8765432109,XYZ Solutions,"Chennai, India"
+CUST003,Maria Fernandez,maria@globex.com,7654321098,Globex Corp,"Mumbai, India"
+CUST004,Amit Patel,amit@patelsoft.com,9123456780,PatelSoft,"Delhi, India"
+CUST005,Sneha Iyer,sneha@idealink.com,9812345678,IdeaLink,"Pune, India"
+CUST006,David Thomas,david@innoverse.com,9988776655,Innoverse,"Hyderabad, India"
+CUST007,Pooja Nair,pooja@futuretech.com,9887766554,FutureTech,"Kochi, India"
+CUST008,Vikram Singh,vikram@datasync.com,9776655443,DataSync,"Gurgaon, India"
+CUST009,Neha Gupta,neha@edgeworks.com,9665544332,EdgeWorks,"Noida, India"
+CUST010,John Doe,john@sample.com,9554433221,Sample Inc,"Kolkata, India"
