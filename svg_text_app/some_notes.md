@@ -2,8 +2,11 @@
 
 Once your code works, run:
 
-pip install pyinstaller pillow cairosvg svgwrite
+pip install pyinstaller pillow cairosvg svgwrite tkinterweb
 
+Cairosvg creates library conflicts
+
+pip install pyinstaller svgwrite tkinterweb
 
 Then create the executable:
 
