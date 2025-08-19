@@ -11,6 +11,10 @@ Following activities are done on the thozhilmate_js folder
 
 Command to run the backend:
 
+Place .venv iside fastapi_backend folder: Python -m venv .venv
+
+Enable the .venv inside the folder
+
 python -m uvicorn app.main:app --reload --app-dir fastapi_backend --port 8000
 
 The fastapi places the db unders thozhilmate_js folder. This folder will be the 
@@ -35,3 +39,10 @@ https://nodejs.org/en/download
 Setup the framework:
 
 npm create vite@latest . -- --template react-ts
+
+npm install @mui/x-data-grid @mui/material @mui/icons-material @emotion/react @emotion/styled @tanstack/react-query axios
+
+npm install @mui/x-data-grid@latest
+
+import { DataGrid, type GridRowsProp } from '@mui/x-data-grid'
+import type { GridColDef } from '@mui/x-data-grid'

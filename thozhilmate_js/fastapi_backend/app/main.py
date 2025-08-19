@@ -9,7 +9,7 @@ from .utils import default_row
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Business Automation API")
+app = FastAPI(title="ThozhilMate API")
 
 # CORS (vite dev)
 app.add_middleware(
