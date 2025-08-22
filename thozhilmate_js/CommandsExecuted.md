@@ -12,7 +12,7 @@ Following activities are done on the thozhilmate_js folder
 Command to run the backend:
 
 Place .venv iside fastapi_backend folder: Python -m venv .venv
-
+```
 Enable the .venv inside the folder
 
 python -m uvicorn app.main:app --reload --app-dir fastapi_backend --port 8000

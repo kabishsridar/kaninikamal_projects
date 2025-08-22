@@ -25,7 +25,7 @@ function Main() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Thozhil Automation with React
+            Thozhilmate Automation with React
           </Typography>
         </Toolbar>
       </AppBar>
