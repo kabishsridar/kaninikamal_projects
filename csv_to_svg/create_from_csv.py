@@ -32,15 +32,15 @@ def csv_to_svg_plain(csv_path, out_path, cell_w=120, cell_h=40, font_size=14):
     # Or: xml_string = doc.string_xml()  # if you need the XML as a string
 
 
-def csv_to_svg(csv_path, out_path, cell_w=420, cell_h=60, font_size=18):
+def csv_to_svg(csv_path, out_path, cell_w=420, cell_h=60, font_size=24):
     # Read CSV
     with open(csv_path, newline='', encoding='utf-8') as f:
         rows = list(csv.reader(f))
 
     n_rows = len(rows)
     n_cols = len(rows[0]) if n_rows else 0
-    width  = n_cols * cell_w
-    height = n_rows * cell_h
+    width  = 1920
+    height = 1080
 
     # Root SVG
     doc = SVG(width=width, height=height)
@@ -58,11 +58,11 @@ def csv_to_svg(csv_path, out_path, cell_w=420, cell_h=60, font_size=18):
 
             # Choose font depending on column
             if c == 0:  # English column
-                font_family = "Chivo, sans-serif"
-                font_weight = "normal"
+                font_family = "Chivo"
+                font_weight = "Semi-Bold"
             else:  # Tamil column
                 font_family = "Nirmala UI"
-                font_weight = "bold"
+                font_weight = "Bold"
 
             # Add text
             doc.append(Text(val, x=x + 10, y=y + cell_h/2 + font_size/3,
@@ -74,4 +74,4 @@ def csv_to_svg(csv_path, out_path, cell_w=420, cell_h=60, font_size=18):
 
 
 if __name__ == "__main__":
-    csv_to_svg("uses_filehandling.csv", "reasons_table.svg")
+    csv_to_svg("uses_filehandling.csv", "reasons_table_1.svg")
