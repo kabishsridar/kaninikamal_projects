@@ -68,13 +68,15 @@ def embed_fonts(svg_content):
     return svg_content
 
 def outline_text_with_inkscape(input_svg, output_svg):
+    
     cmd = [
         "inkscape",
         input_svg,
-        "--export-plain-svg=" + output_svg,
+        "--export-filename=" + output_svg,
         "--export-text-to-path"
     ]
     subprocess.run(cmd, check=True)
+    print(f"Getting the outlined file. {output_svg}")
 
 # --- MAIN GENERATOR ---
 def make_short_svgs(csv_path, question=False):
@@ -99,20 +101,20 @@ def make_short_svgs(csv_path, question=False):
         # Top half
         doc.append(Rect(x=0, y=0, width=WIDTH, height=HALF, fill=top_color, stroke="green", stroke_width=40))
         doc.append(Text(f"{lang1} — {val1}%", x=WIDTH/2, y=HALF/2,
-                        fill="white", font_size=96, text_anchor="middle", font_family="Horizon", font_weight="bold"))
+                        fill="white", font_size=144, text_anchor="middle", font_family="Calibri", font_weight="Bold"))
 
         # Bottom half
         doc.append(Rect(x=0, y=HALF, width=WIDTH, height=HALF, fill=bottom_color, stroke="green", stroke_width=40))
         doc.append(Text(f"{lang2} — {val2}%", x=WIDTH/2, y=HALF + HALF/2,
-                        fill="white", font_size=96, text_anchor="middle", font_family="Horizon", font_weight="bold"))
+                        fill="white", font_size=144, text_anchor="middle", font_family="Calibri", font_weight="Bold"))
 
         # Group title
         doc.append(Text(group, x=WIDTH/2, y=80,
-                        fill="yellow", font_size=72, text_anchor="middle", font_family="ChivoBold"))
+                        fill="yellow", font_size=96, text_anchor="middle", font_family="Calibri"))
 
         # VS badge
         doc.append(Text("VS", x=WIDTH/2, y=HALF + 10,
-                        fill="yellow", font_size=96, text_anchor="middle", font_family="ChivoBold", font_weight="bold"))
+                        fill="yellow", font_size=120, text_anchor="middle", font_family="Calibri", font_weight="bold"))
 
         # Save paths
         if not question:
@@ -125,6 +127,7 @@ def make_short_svgs(csv_path, question=False):
             pngname = f"shorts_{group.strip().replace(' ', '_')}_q.png"
 
         output_file = os.path.join(output_folder, filename)
+        outfile = os.path.join(output_folder, outfile)
         png_file = os.path.join(output_folder, pngname)
 
         # Write SVG with embedded fonts
@@ -140,7 +143,7 @@ def make_short_svgs(csv_path, question=False):
         outline_text_with_inkscape(input_svg=output_file, output_svg=outfile)
 
         # Convert to PNG
-        with wand.image.Image(filename=output_file, resolution=300) as img:
+        with wand.image.Image(filename=outfile, resolution=300) as img:
             img.format = 'png'
             img.save(filename=png_file)
             print("✅ Created PNG:", png_file)
