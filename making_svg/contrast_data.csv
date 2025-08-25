@@ -1,0 +1,17 @@
+Group,Preferred Language,Percentage
+Students,Python,45
+Students,Java,25
+Students,JavaScript,20
+Students,C++,10
+Professionals,Java,40
+Professionals,Python,30
+Professionals,C#,20
+Professionals,Go,10
+Researchers,Python,60
+Researchers,R,20
+Researchers,Julia,10
+Researchers,Matlab,10
+Hobbyists,JavaScript,50
+Hobbyists,Python,30
+Hobbyists,Ruby,10
+Hobbyists,Lua,10
