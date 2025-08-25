@@ -114,6 +114,7 @@ def convert_ass_to_kdenlive(ass_path, output_dir="titles", fps=30.0, width=1920,
     print(f"Created {len(subs)} title files in '{output_dir}' (fps={fps}, size={width}x{height})")
 
 # ---------------- example ----------------
-convert_ass_to_kdenlive("subtitles.ass", 
+subtitle_file = input("Provide the subtitle file name (*.ass): ")
+convert_ass_to_kdenlive(subtitle_file, 
                         output_dir="Kden_Titles", 
                         fps=30.0, width=1920, height=1080)
