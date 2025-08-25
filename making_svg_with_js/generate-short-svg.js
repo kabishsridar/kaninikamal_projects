@@ -88,18 +88,18 @@ function makeShortSvgs(csvFilePath, question = false) {
         svg += `<rect x="0" y="0" width="${WIDTH}" height="${HALF}" fill="${topColor}" stroke="green" stroke-width="40"/>`;
         // Top half text as path
         // svg += svgTextAsPath(`${lang1} — ${val1}`, fontHorizon, 144, WIDTH/2, HALF/2, "#fff", "bold");
-        svg += svgTextAsCenteredPath(`${lang1} — ${val1}`, fontHorizon, 100, WIDTH/2, HALF/2, "#fff");
+        svg += svgTextAsCenteredPath(`${lang1} — ${val1}`, fontHorizon, 110, WIDTH/2, HALF/2, "#fff");
         // Bottom half rect
         svg += `<rect x="0" y="${HALF}" width="${WIDTH}" height="${HALF}" fill="${bottomColor}" stroke="green" stroke-width="40"/>`;
         // Bottom half text as path
         // svg += svgTextAsPath(`${lang2} — ${val2}`, fontHorizon, 144, WIDTH/2, HALF + HALF/2, "#fff", "bold");
-        svg += svgTextAsCenteredPath(`${lang2} — ${val2}`, fontHorizon, 100, WIDTH/2, HALF + HALF/2, "#fff");
+        svg += svgTextAsCenteredPath(`${lang2} — ${val2}`, fontHorizon, 110, WIDTH/2, HALF + HALF/2, "#fff");
         // Group title
         // svg += svgTextAsPath(group, fontChivo, 96, WIDTH/2, 80, "#ffff00");
         // VS badge
         // svg += svgTextAsPath("VS", font, 120, WIDTH/2, HALF + 10, "#ffff00", "bold");
-        svg += svgTextAsCenteredPath(group, fontChivo, 70, WIDTH/2, 80, "#ffff00");
-        svg += svgTextAsCenteredPath("VS", fontChivo, 90, WIDTH/2, HALF + 10, "#ffff00");
+        svg += svgTextAsCenteredPath(group, fontChivo, 100, WIDTH/2, 80, "#ffff00");
+        svg += svgTextAsCenteredPath("VS", fontChivo, 170, WIDTH/2, HALF + 10, "#ffff00");
 
         svg += `</svg>`;
 

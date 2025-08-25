@@ -1,0 +1,21 @@
+<svg width="250" height="320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo at the top -->
+  <image href="LANG_SVG_LINK" x="95" y="10" height="60" width="60"/>
+  
+  <!-- Language Name -->
+  <text x="125" y="85" text-anchor="middle" font-size="22" font-weight="bold" fill="#222">LANG_NAME</text>
+  
+  <!-- Rating bars for each trait -->
+  <g>
+    <!-- Each bar is a trait -->
+    <text x="20" y="110" font-size="12">Readability</text>
+    <rect x="100" y="100" width="RATING1*10" height="12" fill="#4caf50"/>
+    <text x="220" y="110" font-size="12">RATING1</text>
+    
+    <text x="20" y="130" font-size="12">Writability</text>
+    <rect x="100" y="120" width="RATING2*10" height="12" fill="#2196f3"/>
+    <text x="220" y="130" font-size="12">RATING2</text>
+    
+    <!-- Repeat for other 6 traits (change y values by increments of 20 and colors as desired) -->
+  </g>
+</svg>

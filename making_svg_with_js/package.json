@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate": "node generate-short-svg.js side_compare.csv"
+    "generate": "node generate-short-svg.js side_compare.csv",
+    "makecard": "node generate_cards.js"
   },
   "keywords": [],
   "author": "",
