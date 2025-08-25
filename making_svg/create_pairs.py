@@ -19,8 +19,8 @@ def create_svg_from_csv(csv_file, output_svg):
         reader = csv.DictReader(f)
         for i, row in enumerate(reader):
             group = row["Group"]
-            lang_a, val_a = row["Language A"], row["Value A"]
-            lang_b, val_b = row["Language B"], row["Value B"]
+            lang_a, val_a = row["LanguageA"], row["ValueA"]
+            lang_b, val_b = row["LanguageB"], row["ValueB"]
 
             # Choose contrasting colors by cycling
             color_a, color_b = colors[i % len(colors)]

@@ -1,9 +1,9 @@
-Group,Language A,Value A,Language B,Value B
+Group,LanguageA,ValueA,LanguageB,ValueB
 Students,Python,40,Java,30
-Students,JavaScript,20,C++,10
+Students,JS,20,C++,10
 Professionals,Java,35,Python,30
 Professionals,C#,20,Go,15
 Researchers,Python,50,R,25
 Researchers,Julia,15,Matlab,10
-Hobbyists,JavaScript,45,Python,35
+Hobbyists,JS,45,Python,35
 Hobbyists,Ruby,10,Lua,10

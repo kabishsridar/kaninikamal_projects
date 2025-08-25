@@ -23,6 +23,7 @@ wheels/
 share/python-wheels/
 *.egg-info/
 Kden_Titles/
+yt_shorts_svgs/
 .installed.cfg
 *.egg
 MANIFEST
