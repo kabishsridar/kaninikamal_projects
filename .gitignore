@@ -24,6 +24,7 @@ share/python-wheels/
 *.egg-info/
 Kden_Titles/
 yt_shorts_svgs/
+node_modules/
 .installed.cfg
 *.egg
 MANIFEST
