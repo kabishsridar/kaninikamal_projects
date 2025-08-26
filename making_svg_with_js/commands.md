@@ -13,3 +13,7 @@ npm install csv-parse opentype.js sharp
 ### Using npm run generate:
 
 npm run generate will do the above command
+
+### Need to take the Logo Path and then build the infographic
+
+npm install cheerio

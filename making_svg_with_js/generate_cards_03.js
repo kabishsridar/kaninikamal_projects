@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const parse = require('csv-parse/sync').parse;
 const opentype = require('opentype.js');
+const cheerio = require('cheerio');
 
 const dir = "./yt_shorts_svgs";
 if (!fs.existsSync(dir)) {
@@ -16,17 +17,30 @@ const BORDER_WIDTH = 20;
 const CARD_PADDING_X = 120;  // increased padding from edges
 const CARD_PADDING_Y = 60;   // top/bottom padding
 const BAR_WIDTH = 550;       // smaller bars
-const BAR_HEIGHT = 32;       // shorter bars
-const BAR_GAP = 54;
-const BAR_X = CARD_PADDING_X + 150; // bring bars more inward
+const BAR_X = CARD_PADDING_X + 220; // bring bars more inward
 const BAR_START_Y = 510;
 const COLOR_PAIRS = [
   "#4caf50","#2196f3","#ff9800","#009688","#e91e63","#9c27b0","#607d8b","#fbc02d"
 ];
+const BAR_HEIGHT = 54;        // WAS 32, now thicker
+const BAR_GAP = 74;           // WAS 54, now more spacing
+const TRAIT_FONT_SIZE = 42;   // WAS 32, now larger
+const SCORE_FONT_SIZE = 46;   // WAS 34, now larger
+const TITLE_FONT_SIZE = 94;   // WAS 76, now larger
+const DESC_FONT_SIZE = 52;    // WAS 42, now larger
 
 // --- FONT FILES ---
 const FONT_PATH = path.resolve('fonts/calibri.ttf');
 const BOLD_FONT_PATH = path.resolve('fonts/Chivo-Bold.ttf'); // ensure you have this
+
+function getLogoPaths(logoFilePath) {
+  if (!fs.existsSync(logoFilePath)) return '';
+  const svgContent = fs.readFileSync(logoFilePath, 'utf8');
+  const $ = cheerio.load(svgContent, { xmlMode: true });
+  return $('path').map((i, el) =>
+    `<path d="${$(el).attr('d')}" fill="#fff" />`
+  ).get().join('\n');
+}
 
 function getLanguageDesc(lang) {
   const desc = {
@@ -148,31 +162,67 @@ function makeShortSvgs(csvFilePath) {
     `;
 
     // Title and logo
-    const titlePath = svgTextAsCenteredPath(row.Language, font, 76, WIDTH/2, 150, "#fff");
-    const logoSvg = `<image href="./lang_logos/${row.Language}" x="${WIDTH/2-80}" y="235" width="160" height="160" />`;
+    // const titlePath = svgTextAsCenteredPath(row.Language, font, 76, WIDTH/2, 150, "#fff");
+    const titlePath = svgTextAsCenteredPath(row.Language, font, TITLE_FONT_SIZE, WIDTH/2, 150, "#fff");
+    // const logoSvg = `<image href="./lang_logos/${row.Language}" x="${WIDTH/2-80}" y="235" width="160" height="160" />`;
+    //  const logoSvg = `<image href="./lang_logos/${row.Language}.svg" x="${WIDTH/2-80}" y="235" width="160" height="160" />`;
+    // Using the Cheerio to copy the Path into the SVG file
 
+    const logoFile = path.resolve(`lang_logos/${row.Language}.svg`); // update extension as needed
+    
+    const logoPaths = getLogoPaths(logoFile);
+    // Center/scale logo as needed:
+    
+    const logoGroup = `<g transform="translate(${WIDTH/2-80},235) scale(8.0)">
+      ${logoPaths}
+    </g>`;
+    
     // Trait bars, narrowed and inward
     let bars = '';
+    // traitNames.forEach((trait, i) => {
+    //   const key = trait.replace(' ', '_');
+    //   const score = parseInt(row[key], 10) || 1;
+    //   const actualBarWidth = Math.floor((score/10) * BAR_WIDTH);
+    //   const barY = BAR_START_Y + i * BAR_GAP;
+    //   bars += 
+    //     `<text x="${BAR_X-30}" y="${barY+BAR_HEIGHT-8}" font-size="32" font-family="Chivo-Bold, sans-serif" font-weight="bold" fill="#F5F5F5" text-anchor="end">${trait}</text>
+    //     <rect x="${BAR_X}" y="${barY}" width="${BAR_WIDTH}" height="${BAR_HEIGHT}" rx="14" fill="#222" opacity="0.35" />
+    //     <rect x="${BAR_X}" y="${barY}" width="${actualBarWidth}" height="${BAR_HEIGHT}" rx="14" fill="${COLOR_PAIRS[i]}" />
+    //     <text x="${BAR_X+BAR_WIDTH+16}" y="${barY+BAR_HEIGHT-8}" font-size="34" font-family="Chivo-Bold, sans-serif" font-weight="bold" fill="#fff" text-anchor="start">${score}</text>\n`;
+    // });
     traitNames.forEach((trait, i) => {
       const key = trait.replace(' ', '_');
       const score = parseInt(row[key], 10) || 1;
       const actualBarWidth = Math.floor((score/10) * BAR_WIDTH);
       const barY = BAR_START_Y + i * BAR_GAP;
       bars += 
-        `<text x="${BAR_X-30}" y="${barY+BAR_HEIGHT-8}" font-size="32" font-family="Chivo-Bold, sans-serif" font-weight="bold" fill="#F5F5F5" text-anchor="end">${trait}</text>
-        <rect x="${BAR_X}" y="${barY}" width="${BAR_WIDTH}" height="${BAR_HEIGHT}" rx="14" fill="#222" opacity="0.35" />
-        <rect x="${BAR_X}" y="${barY}" width="${actualBarWidth}" height="${BAR_HEIGHT}" rx="14" fill="${COLOR_PAIRS[i]}" />
-        <text x="${BAR_X+BAR_WIDTH+16}" y="${barY+BAR_HEIGHT-8}" font-size="34" font-family="Chivo-Bold, sans-serif" font-weight="bold" fill="#fff" text-anchor="start">${score}</text>\n`;
+        `<text x="${BAR_X-36}" y="${barY+BAR_HEIGHT-14}" font-size="${TRAIT_FONT_SIZE}" font-family="Chivo-Bold,sans-serif" font-weight="bold" fill="#F5F5F5" text-anchor="end">${trait}</text>
+        <rect x="${BAR_X}" y="${barY}" width="${BAR_WIDTH}" height="${BAR_HEIGHT}" rx="20" fill="#222" opacity="0.32" />
+        <rect x="${BAR_X}" y="${barY}" width="${actualBarWidth}" height="${BAR_HEIGHT}" rx="20" fill="${COLOR_PAIRS[i]}" />
+        <text x="${BAR_X+BAR_WIDTH+20}" y="${barY+BAR_HEIGHT-14}" font-size="${SCORE_FONT_SIZE}" font-family="Chivo-Bold,sans-serif" font-weight="bold" fill="#fff" text-anchor="start">${score}</text>\n`;
     });
 
     // Description below bars, tucked in (smaller font, padding)
-    const descStartY = BAR_START_Y + traitNames.length * BAR_GAP + 40;
+    // const descStartY = BAR_START_Y + traitNames.length * BAR_GAP + 40;
+    // const descLines = getLanguageDesc(row.Language).map(
+    //   (line, i) => `
+    //     <text x="${WIDTH/2}" y="${descStartY + i * 45}"
+    //           text-anchor="middle"
+    //           font-size="42"
+    //           font-family="Chivo-Bold, sans-serif"
+    //           font-weight="bold"
+    //           fill="#fff"
+    //           style="text-shadow:0px 2px 12px #333; text-wrap:balance;">
+    //       ${line}
+    //     </text>`
+    // ).join('\n');
+    const descStartY = BAR_START_Y + traitNames.length * BAR_GAP + 50;
     const descLines = getLanguageDesc(row.Language).map(
       (line, i) => `
-        <text x="${WIDTH/2}" y="${descStartY + i * 45}"
+        <text x="${WIDTH/2}" y="${descStartY + i * 54}"
               text-anchor="middle"
-              font-size="42"
-              font-family="Chivo-Bold, sans-serif"
+              font-size="${DESC_FONT_SIZE}"
+              font-family="Chivo-Bold,sans-serif"
               font-weight="bold"
               fill="#fff"
               style="text-shadow:0px 2px 12px #333; text-wrap:balance;">
@@ -188,7 +238,7 @@ function makeShortSvgs(csvFilePath) {
   ${cardBorder}
   <g>
     ${titlePath}
-    ${logoSvg}
+    ${logoGroup}
     ${bars}
     ${descLines}
   </g>
