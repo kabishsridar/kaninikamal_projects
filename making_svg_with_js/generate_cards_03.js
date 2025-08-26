@@ -24,7 +24,7 @@ const COLOR_PAIRS = [
 ];
 const BAR_HEIGHT = 54;        // WAS 32, now thicker
 const BAR_GAP = 74;           // WAS 54, now more spacing
-const TRAIT_FONT_SIZE = 42;   // WAS 32, now larger
+const TRAIT_FONT_SIZE = 50;   // WAS 32, now larger to more larger 
 const SCORE_FONT_SIZE = 46;   // WAS 34, now larger
 const TITLE_FONT_SIZE = 94;   // WAS 76, now larger
 const DESC_FONT_SIZE = 52;    // WAS 42, now larger
@@ -158,7 +158,7 @@ function makeShortSvgs(csvFilePath) {
     const cardBorder = `
       <rect x="${BORDER_WIDTH/2}" y="${BORDER_WIDTH/2}" 
             width="${WIDTH-BORDER_WIDTH}" height="${HEIGHT-BORDER_WIDTH}" 
-            rx="${BORDER_RADIUS}" fill="none" stroke="#fff" stroke-width="${BORDER_WIDTH}" />
+            rx="${BORDER_RADIUS}" fill="url(#bg-gradient)" stroke="#fff" stroke-width="${BORDER_WIDTH}" />
     `;
 
     // Title and logo
@@ -196,7 +196,7 @@ function makeShortSvgs(csvFilePath) {
       const actualBarWidth = Math.floor((score/10) * BAR_WIDTH);
       const barY = BAR_START_Y + i * BAR_GAP;
       bars += 
-        `<text x="${BAR_X-36}" y="${barY+BAR_HEIGHT-14}" font-size="${TRAIT_FONT_SIZE}" font-family="Chivo-Bold,sans-serif" font-weight="bold" fill="#F5F5F5" text-anchor="end">${trait}</text>
+        `<text x="${BAR_X-36}" y="${barY+BAR_HEIGHT-14}" font-size="${TRAIT_FONT_SIZE}" font-family="Calibri" font-weight="normal" fill="#F5F5F5" text-anchor="end">${trait}</text>
         <rect x="${BAR_X}" y="${barY}" width="${BAR_WIDTH}" height="${BAR_HEIGHT}" rx="20" fill="#222" opacity="0.32" />
         <rect x="${BAR_X}" y="${barY}" width="${actualBarWidth}" height="${BAR_HEIGHT}" rx="20" fill="${COLOR_PAIRS[i]}" />
         <text x="${BAR_X+BAR_WIDTH+20}" y="${barY+BAR_HEIGHT-14}" font-size="${SCORE_FONT_SIZE}" font-family="Chivo-Bold,sans-serif" font-weight="bold" fill="#fff" text-anchor="start">${score}</text>\n`;
@@ -222,8 +222,8 @@ function makeShortSvgs(csvFilePath) {
         <text x="${WIDTH/2}" y="${descStartY + i * 54}"
               text-anchor="middle"
               font-size="${DESC_FONT_SIZE}"
-              font-family="Chivo-Bold,sans-serif"
-              font-weight="bold"
+              font-family="Calibri"
+              font-weight="normal"
               fill="#fff"
               style="text-shadow:0px 2px 12px #333; text-wrap:balance;">
           ${line}
