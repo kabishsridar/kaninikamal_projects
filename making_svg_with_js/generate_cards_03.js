@@ -158,9 +158,16 @@ function makeShortSvgs(csvFilePath) {
     const cardBorder = `
       <rect x="${BORDER_WIDTH/2}" y="${BORDER_WIDTH/2}" 
             width="${WIDTH-BORDER_WIDTH}" height="${HEIGHT-BORDER_WIDTH}" 
-            rx="${BORDER_RADIUS}" fill="url(#bg-gradient)" stroke="#fff" stroke-width="${BORDER_WIDTH}" />
+            rx="64" fill="url(#bg-gradient)" stroke="#fff" stroke-width="20" />
     `;
-
+    //     <rect
+    //   x="20" y="20"
+    //   width="1040" height="1880"
+    //   rx="64"
+    //   fill="url(#bg-gradient)"
+    //   stroke="#fff"
+    //   stroke-width="20"
+    // />
     // Title and logo
     // const titlePath = svgTextAsCenteredPath(row.Language, font, 76, WIDTH/2, 150, "#fff");
     const titlePath = svgTextAsCenteredPath(row.Language, font, TITLE_FONT_SIZE, WIDTH/2, 150, "#fff");
@@ -234,7 +241,6 @@ function makeShortSvgs(csvFilePath) {
     const svgContent = `
 <svg viewBox="0 0 ${WIDTH} ${HEIGHT}" width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   ${grad}
-  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
   ${cardBorder}
   <g>
     ${titlePath}
