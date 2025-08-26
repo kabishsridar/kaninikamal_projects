@@ -127,8 +127,8 @@ function makeShortSvgs(csvFilePath) {
     "Maintainability",
     "Security",
     "Compatibility",
-    "Standards Compliance",
-    "Community Support"
+    "Compliance",
+    "Community"
   ];
 
   rows.forEach((row, idx) => {
@@ -149,7 +149,7 @@ function makeShortSvgs(csvFilePath) {
 
     // Title and logo
     const titlePath = svgTextAsCenteredPath(row.Language, font, 76, WIDTH/2, 150, "#fff");
-    const logoSvg = `<image href="${row.SVG_Repo_Link}" x="${WIDTH/2-80}" y="235" width="160" height="160" />`;
+    const logoSvg = `<image href="./lang_logos/${row.Language}" x="${WIDTH/2-80}" y="235" width="160" height="160" />`;
 
     // Trait bars, narrowed and inward
     let bars = '';
