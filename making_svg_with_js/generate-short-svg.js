@@ -5,7 +5,7 @@ const opentype = require('opentype.js');
 const sharp = require('sharp');
 
 // create folder if not exists
-const dir = "./yt_shorts_svgs";
+const dir = "./yt_shorts_svg";
 
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir, { recursive: true });
@@ -106,12 +106,12 @@ function makeShortSvgs(csvFilePath, question = false) {
         // Write SVG
         const safeGroup = group.replace(/ /g, '_');
         const name = question ? `${safeGroup}_q` : safeGroup;
-        const svgPath = `./yt_shorts_svgs/shorts_${name}.svg`;
+        const svgPath = `./yt_shorts_svg/shorts_${name}.svg`;
         fs.writeFileSync(svgPath, svg, 'utf8');
         console.log(`✅ Created SVG: ${svgPath}`);
 
         // Convert SVG to PNG
-        const pngPath = `./yt_shorts_svgs/shorts_${name}.png`;
+        const pngPath = `./yt_shorts_svg/shorts_${name}.png`;
         sharp(Buffer.from(svg)).png().toFile(pngPath)
             .then(() => console.log(`✅ Created PNG: ${pngPath}`))
             .catch(err => console.error("Sharp PNG error", err));
