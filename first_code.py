@@ -1,4 +1,8 @@
 import builtins
+import sys
+
+print(sys.argv, "Output of ARGV")
+
 print("Hello Kanini Kamal channel viewers")
 x = 5
 print(globals())

@@ -1,11 +1,16 @@
 import turtle
 import sys
 import csv
+from time import sleep
 
 # Setup turtle
+turtle.reset()
+sleep(2)
 turtle.speed(2)       # medium speed
 turtle.turtlesize(2)  # bigger turtle
 turtle.pensize(4)     # thicker pen
+
+# turtle.write("Awaiting Instructions: ", font=("Calibri", 24))
 
 def draw_rectangle(w, h):
     for _ in range(2):
@@ -38,6 +43,7 @@ elif len(sys.argv) == 3:
 elif len(sys.argv) == 2:
     # Case 3: CSV input
     csv_file = sys.argv[1]
+    
     with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
         colors = ["red", "blue", "green", "purple", "orange"]
@@ -45,6 +51,7 @@ elif len(sys.argv) == 2:
             w = int(row["width"])
             h = int(row["height"])
             turtle.pencolor(colors[i % len(colors)])  # different color per rect
+            turtle.pensize(4)     # thicker pen
             draw_rectangle(w, h)
             turtle.penup()
             turtle.left(90)
