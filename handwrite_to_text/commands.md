@@ -12,6 +12,7 @@ python -m venv .venv
 
 pip install paddlepaddle
 pip install "paddleocr>=2.0.1"
+pip install questionary
 
 4) Install CCache:
 
